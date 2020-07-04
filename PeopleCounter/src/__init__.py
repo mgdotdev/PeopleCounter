@@ -1,3 +1,4 @@
 from PeopleCounter.src import(
-    tools
+    tools,
+    Counter
 )
