@@ -41,18 +41,23 @@
 </head>
 
 <body>
-    <div class="jumbotron card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
+    <div class="jumbotron card card-image"
+        style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
         <div class="text-white text-center py-5 px-4">
-          <div>
-            <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Want to know where NOT to go?!</strong></h2>
-            <p class="mx-5 mb-5"> We tell you below how many people are at your favorite beaches. So if you're worried about
-                the coronas or just tired of overcrouded beaches, we got you. In case you don't believe us (why would you), 
-                we provide a link of live footage of the beach. Pretty snazzy huh?
-            </p>
-            <a href="#dtBasicExample" class="btn btn-outline-white btn-md"><i class="fas fa-clone left"></i> To the data, and beyond! </a>
-          </div>
+            <div>
+                <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Want to know where NOT to go?!</strong>
+                </h2>
+                <p class="mx-5 mb-5"> We tell you below how many people are at your favorite beaches. So if you're
+                    worried about
+                    the coronas or just tired of overcrouded beaches, we got you. In case you don't believe us (why
+                    would you),
+                    we provide a link of live footage of the beach. Pretty snazzy huh?
+                </p>
+                <a href="#dtBasicExample" class="btn btn-outline-white btn-md"><i class="fas fa-clone left"></i> To the
+                    data, and beyond! </a>
+            </div>
         </div>
-      </div>
+    </div>
     <!-- <p id="p">template</p>
     <i class="fab fa-mandalorian"></i>
     <i class="fab fa-mdb "></i>
@@ -68,20 +73,20 @@
         <div class="col"></div>
     </div>
     <div class="container">
-    <h2 class='mb-3'>Beach Populations </h2>
-    <table id="dtBasicExample" class="table" width="100%">
-        <thead>
-            <tr>
-                <th class="th-sm"><i class="fas fa-umbrella-beach"></i>Beach
-                </th>
-                <th class="th-sm"><i class="fas fa-male"></i> Population
-                </th>
-                <th class="th-sm"><i class="fab fa-youtube"></i>Live Video
-                </th>
-            </tr>
-        </thead>
-        <tbody id="tbody">
-            <!-- <tr>
+        <h2 class='mb-3'>Beach Populations </h2>
+        <table id="dtBasicExample" class="table" width="100%">
+            <thead>
+                <tr>
+                    <th class="th-sm"><i class="fas fa-umbrella-beach"></i>Beach
+                    </th>
+                    <th class="th-sm"><i class="fas fa-male"></i> Population
+                    </th>
+                    <th class="th-sm"><i class="fab fa-youtube"></i>Live Video
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <!-- <tr>
                 <td>Tiger Nixon</td>
                 <td>System Architect</td>
                 <td>Edinburgh</td>
@@ -89,24 +94,29 @@
                 <td>2011/04/25</td>
                 <td>$320,800</td>
             </tr> -->
-        </tbody>
-        <tfoot>
-            <tr>
-                <th class="th-sm"><i class="fas fa-umbrella-beach"></i>Beach
-                </th>
-                <th class="th-sm"><i class="fas fa-male"></i> Population
-                </th>
-                <th class="th-sm"><i class="fab fa-youtube"></i>Live Video
-                </th>
-            </tr>
-        </tfoot>
-    </table>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th class="th-sm"><i class="fas fa-umbrella-beach"></i>Beach
+                    </th>
+                    <th class="th-sm"><i class="fas fa-male"></i> Population
+                    </th>
+                    <th class="th-sm"><i class="fab fa-youtube"></i>Live Video
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
     <script>
         let p = document.querySelector("#p");
 
         // Make a request for a user with a given ID
-        axios.get('https://hack-b6yvg7c7tq-uc.a.run.app/get-beaches/')
+        axios.get('https://cors-anywhere.herokuapp.com/https://hack-b6yvg7c7tq-uc.a.run.app/get-beaches/', {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin':'Origin, X-Requested-With, Content-Type, Accept'
+            }
+        })
             .then(function (response) {
                 // handle success
                 // console.log(response.data.data);
@@ -131,7 +141,7 @@
             // making the rows and adding them 
             const table = document.querySelector("#tbody");
             for (i in data) {
-                let row =   `<tr>
+                let row = `<tr>
                                 <td>${data[i]["beach_name"]}</td>
                                 <td>${data[i]["population"]}</td>
                                 <td><button class="btn aqua-gradient" onclick=" changeVideo('${i}');">see </button></td>
@@ -140,8 +150,7 @@
             }
         };
 
-        const changeVideo = (videoId) =>
-        {
+        const changeVideo = (videoId) => {
             document.querySelector("#iframe").style.display = 'block';
             document.querySelector("#iframe").src = `https://www.youtube.com/embed/${videoId}`;
         };
