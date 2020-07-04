@@ -1,7 +1,6 @@
 import PeopleCounter
 
 import tensorflow as tf
-import tensorflow_hub as hub
 import numpy as np
 import time
 
@@ -23,13 +22,3 @@ def run_detector(detector, path):
     return_dict = {key: value.numpy() for key, value in result.items()}
 
     return return_dict
-
-def detect_img(image_path):
-    
-    detector = hub.load(
-    "https://tfhub.dev/google/faster_rcnn/openimages_v4/inception_resnet_v2/1"
-    ).signatures['default']
-
-    result = run_detector(detector, image_path)
-
-    return result
