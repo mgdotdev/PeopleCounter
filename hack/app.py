@@ -1,8 +1,8 @@
 '''
 some important commands
-project id : `gcloud config get-value project`
-launch container : `gcloud builds submit --tag gcr.io/PROJECT-ID/helloworld`
-launch app : `gcloud run deploy --image gcr.io/PROJECT-ID/helloworld --platform managed`
+project id : gcloud config get-value project
+launch container : gcloud builds submit --tag gcr.io/hack-282223/hack or gcloud builds submit --tag gcr.io/PROJECT-ID/helloworld
+launch app : gcloud run deploy --image gcr.io/hack-282223/hack --platform managed or gcloud run deploy --image gcr.io/PROJECT-ID/helloworld --platform managed
 
 info{
     project-id : hack-282223

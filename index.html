@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beach (bay) watch</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <p id="p"></p>
+
+    <script>
+        let p = document.querySelector("#p");
+
+        // Make a request for a user with a given ID
+        axios.get('https://hack-b6yvg7c7tq-uc.a.run.app/get-beaches/')
+            .then(function (response) {
+                // handle success
+                // console.log(response.data.data);
+                p.innerHTML = JSON.stringify(response.data.data);
+                // console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+
+        axios.get('https://hack-b6yvg7c7tq-uc.a.run.app/update/?beach=awesome2%20beach&population=12342')
+            .then(function (response) {
+                // console.log(response);
+                p.innerHTML += JSON.stringify(response.data.data);
+            })
+            .catch(function (error) {
+                // console.log(error);
+            });
+    </script>
+</body>
+
+</html>
