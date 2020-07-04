@@ -141,9 +141,14 @@
             // making the rows and adding them 
             const table = document.querySelector("#tbody");
             for (i in data) {
+                let icon = '<i class="fas fa-male"></i>';
+                if(parseInt(data[i]["population"]) > 10)
+                    icon += '<i class="fas fa-male"></i>';
+                if(parseInt(data[i]["population"]) > 30)
+                    icon += '<i class="fas fa-male"></i>';
                 let row = `<tr>
                                 <td>${data[i]["beach_name"]}</td>
-                                <td>${data[i]["population"]}</td>
+                                <td><span hidden='true'>${data[i]['population']}</span>${/*data[i]["population"]*/ icon}</td>
                                 <td><button class="btn aqua-gradient" onclick=" changeVideo('${i}');">see </button></td>
                             </tr>`;
                 table.innerHTML += row;
