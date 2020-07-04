@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beach (bay) watch</title>
+    <!-- jquery crap (why does this still exist?) -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- bootstrap material design new  -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <!-- table stuff ?  -->
+    <!-- DataTables CSS -->
+    <link href="table_stuff/datatables2.min.css" rel="stylesheet">
+    <!-- DataTables JS -->
+    <script src="table_stuff/datatables2.min.js" type="text/javascript"></script>
+
+    <!-- DataTables Select CSS -->
+    <link href="table_stuff/datatables-select2.min.css" rel="stylesheet">
+    <!-- DataTables Select JS -->
+    <script src="table_stuff/datatables-select2.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="jumbotron card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
+        <div class="text-white text-center py-5 px-4">
+          <div>
+            <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Want to know where NOT to go?!</strong></h2>
+            <p class="mx-5 mb-5"> We tell you below how many people are at your favorite beaches. So if you're worried about
+                the coronas or just tired of overcrouded beaches, we got you. In case you don't believe us (why would you), 
+                we provide a link of live footage of the beach. Pretty snazzy huh?
+            </p>
+            <a href="#dtBasicExample" class="btn btn-outline-white btn-md"><i class="fas fa-clone left"></i> To the data, and beyond! </a>
+          </div>
+        </div>
+      </div>
+    <!-- <p id="p">template</p>
+    <i class="fab fa-mandalorian"></i>
+    <i class="fab fa-mdb "></i>
+    <i class="fas fa-sun"></i>
+    <i class="fas fa-umbrella-beach"></i>
+    <i class="fas fa-water"></i> -->
+    <hr>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <iframe id="iframe" src="x" style="display: none; width: 33vw; height: 33vh;">iframe no work</iframe>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="container">
+    <h2 class='mb-3'>Beach Populations </h2>
+    <table id="dtBasicExample" class="table" width="100%">
+        <thead>
+            <tr>
+                <th class="th-sm"><i class="fas fa-umbrella-beach"></i>Beach
+                </th>
+                <th class="th-sm"><i class="fas fa-male"></i> Population
+                </th>
+                <th class="th-sm"><i class="fab fa-youtube"></i>Live Video
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <!-- <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th class="th-sm"><i class="fas fa-umbrella-beach"></i>Beach
+                </th>
+                <th class="th-sm"><i class="fas fa-male"></i> Population
+                </th>
+                <th class="th-sm"><i class="fab fa-youtube"></i>Live Video
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+    <script>
+        let p = document.querySelector("#p");
+
+        // Make a request for a user with a given ID
+        axios.get('https://hack-b6yvg7c7tq-uc.a.run.app/get-beaches/')
+            .then(function (response) {
+                // handle success
+                // console.log(response.data.data);
+                // p.innerHTML = JSON.stringify(response.data.data);
+                // console.log(response);
+                popTable(response.data.data);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+
+        const popTable = (data) => {
+            // this makes the table selectable and all that 
+            $(document).ready(function () {
+                $('#dtBasicExample').DataTable();
+                $('.dataTables_length').addClass('bs-select');
+            });
+            // making the rows and adding them 
+            const table = document.querySelector("#tbody");
+            for (i in data) {
+                let row =   `<tr>
+                                <td>${data[i]["beach_name"]}</td>
+                                <td>${data[i]["population"]}</td>
+                                <td><button class="btn aqua-gradient" onclick=" changeVideo('${i}');">see </button></td>
+                            </tr>`;
+                table.innerHTML += row;
+            }
+        };
+
+        const changeVideo = (videoId) =>
+        {
+            document.querySelector("#iframe").style.display = 'block';
+            document.querySelector("#iframe").src = `https://www.youtube.com/embed/${videoId}`;
+        };
+
+
+        // axios.get('https://hack-b6yvg7c7tq-uc.a.run.app/update/?beach=awesome2%20beach&population=12342')
+        //     .then(function (response) {
+        //         // console.log(response);
+        //         p.innerHTML += JSON.stringify(response.data.data);
+        //     })
+        //     .catch(function (error) {
+        //         // console.log(error);
+        //     });
+    </script>
+</body>
+
+</html>

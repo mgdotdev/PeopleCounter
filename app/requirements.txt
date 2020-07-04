@@ -1,7 +1,0 @@
-Flask==1.1.2
-git+git://github.com/1mikegrn/PeopleCounter
-gunicorn==19.6.0
-tensorflow==2.2.0
-tensorflow-hub==0.8.0
-numpy==1.18.1
-Pillow==7.0.0

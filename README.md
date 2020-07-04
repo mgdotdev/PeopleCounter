@@ -1,6 +1,7 @@
 # PeopleCounter
 
-Google cloud application created by Michael Green and Shane may for the 2020 MLH Hackcation hackathon.
+Google cloud application created by Michael Green and Shane May for the 2020 MLH
+Hackcation hackathon.
 
 ----------------
 
