@@ -2,7 +2,7 @@ import PeopleCounter
 from os import path
 
 class Counter:
-    def __init__(self, file_path, thrs):
+    def __init__(self, file_path):
 
         if ('http://' in file_path or 'https://' in file_path):
             file_path = PeopleCounter.src.tools.img_from_url.download_and_resize_image(
