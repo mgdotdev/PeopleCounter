@@ -41,6 +41,22 @@ def update():
         beach_to_population[beach_name] = population
         print(beach_to_population)
 
+@app.route('/update/', methods = ['GET', 'POST'])
+def update():
+    if request.method == 'GET':
+        beach_name = request.args.get('beach', default='no_name', type=str)
+        population = request.args.get('population', default=0, type=int)
+        video = request.args.get('video', default='no_video', type=str)
+        beach_to_population[beach_name] = population
+        print(beach_to_population)
+        return jsonify(isError= False,message= "Success",statusCode= 200,data= beach_to_population), 200
+
+    if request.method == 'POST':
+        beach_name = request.form.get('beach')
+        population = request.form.get('population')
+        beach_to_population[beach_name] = population
+        print(beach_to_population)
+
 @app.route('/get-beaches/', methods= ['GET'])
 def get_beaches():
     return jsonify(isError= False,message= "Success",statusCode= 200,data= beach_to_population), 200
