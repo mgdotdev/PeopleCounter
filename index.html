@@ -5,12 +5,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>beach (bay) watch</title>
+    <!-- jquery crap (why does this still exist?) -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- bootstrap material design new  -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <!-- table stuff ?  -->
+    <!-- DataTables CSS -->
+    <link href="table_stuff/datatables2.min.css" rel="stylesheet">
+    <!-- DataTables JS -->
+    <script src="table_stuff/datatables2.min.js" type="text/javascript"></script>
+
+    <!-- DataTables Select CSS -->
+    <link href="table_stuff/datatables-select2.min.css" rel="stylesheet">
+    <!-- DataTables Select JS -->
+    <script src="table_stuff/datatables-select2.min.js" type="text/javascript"></script>
 </head>
 
 <body>
 
-    <p id="p"></p>
+    <p id="p">template</p>
+    <i class="fab fa-mandalorian"></i>
+    <i class="fab fa-mdb "></i>
+    <i class="fas fa-sun"></i>
+    <i class="fas fa-umbrella-beach"></i>
+    <i class="fas fa-water"></i>
+
+
+    <h2 class='mb-3'>Beach Populations </h2>
+    <table id="dtBasicExample" class="table" width="100%">
+        <thead>
+            <tr>
+                <th class="th-sm"><i class="fas fa-umbrella-beach"></i>Beach
+                </th>
+                <th class="th-sm"><i class="fas fa-male"></i> Population
+                </th>
+                <th class="th-sm"><i class="fab fa-youtube"></i>Live Video
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <!-- <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th class="th-sm"><i class="fas fa-umbrella-beach"></i>Beach
+                </th>
+                <th class="th-sm"><i class="fas fa-male"></i> Population
+                </th>
+                <th class="th-sm"><i class="fab fa-youtube"></i>Live Video
+                </th>
+            </tr>
+        </tfoot>
+    </table>
 
     <script>
         let p = document.querySelector("#p");
@@ -22,6 +94,7 @@
                 // console.log(response.data.data);
                 p.innerHTML = JSON.stringify(response.data.data);
                 // console.log(response);
+                popTable(response.data.data);
             })
             .catch(function (error) {
                 // handle error
@@ -31,14 +104,33 @@
                 // always executed
             });
 
-        axios.get('https://hack-b6yvg7c7tq-uc.a.run.app/update/?beach=awesome2%20beach&population=12342')
-            .then(function (response) {
-                // console.log(response);
-                p.innerHTML += JSON.stringify(response.data.data);
-            })
-            .catch(function (error) {
-                // console.log(error);
+        const popTable = (data) => {
+            // this makes the table selectable and all that 
+            $(document).ready(function () {
+                $('#dtBasicExample').DataTable();
+                $('.dataTables_length').addClass('bs-select');
             });
+            // making the rows and adding them 
+            const table = document.querySelector("#tbody");
+            for (i in data) {
+                let row =   `<tr>
+                                <td>${i}</td>
+                                <td>${data[i]}</td>
+                                <td>video btn</td>
+                            </tr>`;
+                table.innerHTML += row;
+            }
+        };
+
+
+        // axios.get('https://hack-b6yvg7c7tq-uc.a.run.app/update/?beach=awesome2%20beach&population=12342')
+        //     .then(function (response) {
+        //         // console.log(response);
+        //         p.innerHTML += JSON.stringify(response.data.data);
+        //     })
+        //     .catch(function (error) {
+        //         // console.log(error);
+        //     });
     </script>
 </body>
 
