@@ -1,0 +1,27 @@
+/* ---------------------------------------------- /*
+ * Meta
+/* ---------------------------------------------- */
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
+
+body, html {
+    font: 300 15px/1.6 'Raleway', serif, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #343a40;
+}
+
+
+a {
+    color: #00e5ff;
+}
+
+.grid {
+    display: grid;
+    grid-template-areas:
+    "hdr hdr hdr"
+    "lft ctr rgt"
+    "ftr ftr ftr";
+    grid-template-columns: 1fr 12fr 1fr;
+    grid-template-rows: 110px 1fr 20px;
+}
