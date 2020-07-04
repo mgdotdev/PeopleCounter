@@ -42,14 +42,14 @@
 
 <body>
 
-    <p id="p">template</p>
+    <!-- <p id="p">template</p>
     <i class="fab fa-mandalorian"></i>
     <i class="fab fa-mdb "></i>
     <i class="fas fa-sun"></i>
     <i class="fas fa-umbrella-beach"></i>
-    <i class="fas fa-water"></i>
+    <i class="fas fa-water"></i> -->
 
-    <iframe src="https://www.youtube.com/embed/DY5RYp4sxYc">iframe no work</iframe>
+    <iframe id="iframe" src="x" style="display: none;">iframe no work</iframe>
 
     <h2 class='mb-3'>Beach Populations </h2>
     <table id="dtBasicExample" class="table" width="100%">
@@ -93,7 +93,7 @@
             .then(function (response) {
                 // handle success
                 // console.log(response.data.data);
-                p.innerHTML = JSON.stringify(response.data.data);
+                // p.innerHTML = JSON.stringify(response.data.data);
                 // console.log(response);
                 popTable(response.data.data);
             })
@@ -115,12 +115,18 @@
             const table = document.querySelector("#tbody");
             for (i in data) {
                 let row =   `<tr>
-                                <td>${i}</td>
-                                <td>${data[i]}</td>
-                                <td>video btn</td>
+                                <td>${data[i]["beach_name"]}</td>
+                                <td>${data[i]["population"]}</td>
+                                <td><button class="btn aqua-gradient" onclick=" changeVideo('${i}');">see beach</button></td>
                             </tr>`;
                 table.innerHTML += row;
             }
+        };
+
+        const changeVideo = (videoId) =>
+        {
+            document.querySelector("#iframe").style.display = 'block';
+            document.querySelector("#iframe").src = `https://www.youtube.com/embed/${videoId}`;
         };
 
 
