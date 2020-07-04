@@ -41,16 +41,33 @@
 </head>
 
 <body>
-
+    <div class="jumbotron card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
+        <div class="text-white text-center py-5 px-4">
+          <div>
+            <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Want to know where NOT to go?!</strong></h2>
+            <p class="mx-5 mb-5"> We tell you below how many people are at your favorite beaches. So if you're worried about
+                the coronas or just tired of overcrouded beaches, we got you. In case you don't believe us (why would you), 
+                we provide a link of live footage of the beach. Pretty snazzy huh?
+            </p>
+            <a href="#dtBasicExample" class="btn btn-outline-white btn-md"><i class="fas fa-clone left"></i> To the data, and beyond! </a>
+          </div>
+        </div>
+      </div>
     <!-- <p id="p">template</p>
     <i class="fab fa-mandalorian"></i>
     <i class="fab fa-mdb "></i>
     <i class="fas fa-sun"></i>
     <i class="fas fa-umbrella-beach"></i>
     <i class="fas fa-water"></i> -->
-
-    <iframe id="iframe" src="x" style="display: none;">iframe no work</iframe>
-
+    <hr>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <iframe id="iframe" src="x" style="display: none; width: 33vw; height: 33vh;">iframe no work</iframe>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="container">
     <h2 class='mb-3'>Beach Populations </h2>
     <table id="dtBasicExample" class="table" width="100%">
         <thead>
@@ -84,7 +101,7 @@
             </tr>
         </tfoot>
     </table>
-
+    </div>
     <script>
         let p = document.querySelector("#p");
 
@@ -117,7 +134,7 @@
                 let row =   `<tr>
                                 <td>${data[i]["beach_name"]}</td>
                                 <td>${data[i]["population"]}</td>
-                                <td><button class="btn aqua-gradient" onclick=" changeVideo('${i}');">see beach</button></td>
+                                <td><button class="btn aqua-gradient" onclick=" changeVideo('${i}');">see </button></td>
                             </tr>`;
                 table.innerHTML += row;
             }
