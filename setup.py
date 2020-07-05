@@ -27,6 +27,14 @@ setup(
 
     python_requires='>=3.6',
 
+    install_requires=[
+        'Flask>=0.11.1',
+        'tensorflow>=2.2.0',
+        'tensorflow-hub>=0.8.0',
+        'numpy>=1.18.1',
+        'Pillow>=7.0.0',
+    ],
+
     project_urls={
         'GitHub': 'https://github.com/1mikegrn/PeopleCounter'
     }
