@@ -5,7 +5,6 @@ import time
 from os import path
 
 here = path.dirname(path.abspath(__file__))
-
 url = 'https://www.youtube.com/embed/'
 
 places = [
