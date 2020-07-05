@@ -27,9 +27,9 @@ Overall we were able to generate a functional website that accomplished the task
 
 ## What we learned
 
-Michael: I learned about tensorflow-hub and how to implement their pre-built models, and how to host web services in the google cloud.
+Michael: I learned about tensorflow-hub and how to implement their pre-built models, and how to host web services in the google cloud. This is something I've always wanted to pick up and am happy to have had the opportunity to try out the GCP here.
 
-Shane: I learned how to use Flask and Docker for developing back-end services in google cloud.  
+Shane: I learned how to use Flask and Docker for developing back-end services in google cloud. It was an awesome experience!
 
 # Additional information
 
